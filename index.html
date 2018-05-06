@@ -7,16 +7,34 @@
     </head>
     
     <body>
+    		<style>
+    			#play-button {
+    			  position: fixed;
+    			  top: calc(50% - 1em);
+    			  left: calc(50% - 2em);
+    			  width: 4em;
+    			  height: 2em;
+    			  z-index: 10;
+    			}
+    		</style>
+    		<button id="play-button">Play</button>
         <a-scene>
             <a-assets>
-                <video id="SphereVideo" autoplay loop="true" src="video/SphereVideo.webm" webkit-playsinline>
+                <video id="vid" autoplay="false" loop="true" src="video/SphereVideo.webm" webkit-playsinline>
             </a-assets>
 
             <!-- Using the asset management system. -->
-            <a-videosphere src="#SphereVideo"></a-videosphere>
+            <a-videosphere src="#vid"></a-videosphere>
 
-            <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
-            <!--<a-videosphere src="video/SphereVideo.webm"></a-videosphere>-->
         </a-scene>
+        
+        <script>
+        	var vid = document.getElementById('vid');
+        	console.log(vid);
+        	document.getElementById('play-button').addEventListener("click", function(e){
+        	  this.style.display = 'none';
+        	  vid.play();
+        	}, false);
+        </script>
     </body>
 </html>
